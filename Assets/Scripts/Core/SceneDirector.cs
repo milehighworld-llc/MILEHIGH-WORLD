@@ -25,14 +25,8 @@ namespace MilehighWorld.Core
         // 🛡️ Sentinel: Protected core singletons from Insecure Direct Object Reference (IDOR) access via GameObject.Find.
         private static readonly HashSet<string> _protectedManagers = new HashSet<string>
         {
-            "CampaignManager", "SceneDirector", "CameraManager", "AlliancePowerManager", "GlobalResonanceManager", "CombatManager", "EncounterDirector", "NarrativeActionResolver", "GameManager", "BackendSyncService", "RealitySyncEngine"
-            "CampaignManager", "SceneDirector", "CameraManager", "AlliancePowerManager", "GlobalResonanceManager", "CombatManager", "EncounterDirector", "NarrativeActionResolver", "GameManager", "BackendSyncService",
-            "RealitySyncEngine", "RealityAnchor", "BicameralBattleEngine", "FoxParadeDirector", "CinematicController"
-            "CampaignManager", "SceneDirector", "CameraManager", "AlliancePowerManager", "GlobalResonanceManager", "CombatManager", "EncounterDirector", "NarrativeActionResolver", "GameManager", "BackendSyncService", "RealitySyncEngine"
-            "CampaignManager", "SceneDirector", "CameraManager", "AlliancePowerManager", "GlobalResonanceManager", "CombatManager", "EncounterDirector", "NarrativeActionResolver", "GameManager", "BackendSyncService", "RealitySyncEngine", "FoxParadeDirector", "TimelineSimulationEngine", "VitisAIBridge", "IXNodeController", "HarmonicTerrainEngine", "BicameralBattleEngine"
             "CampaignManager", "SceneDirector", "CameraManager", "AlliancePowerManager", "GlobalResonanceManager", "CombatManager", "EncounterDirector", "NarrativeActionResolver", "GameManager", "BackendSyncService", "RealitySyncEngine",
-            "FoxParadeDirector", "TimelineSimulationEngine", "VitisAIBridge", "IXNodeController"
-            "CampaignManager", "SceneDirector", "CameraManager", "AlliancePowerManager", "GlobalResonanceManager", "CombatManager", "EncounterDirector", "NarrativeActionResolver", "GameManager", "BackendSyncService", "RealitySyncEngine", "FoxParadeDirector", "TimelineSimulationEngine", "VitisAIBridge", "IXNodeController"
+            "RealityAnchor", "BicameralBattleEngine", "FoxParadeDirector", "CinematicController", "TimelineSimulationEngine", "VitisAIBridge", "IXNodeController", "HarmonicTerrainEngine"
         };
 
         private static readonly Regex _nameValidator = new Regex(@"^[a-zA-Z0-9_\s\(\)\-$\.\/\[\]]+$", RegexOptions.Compiled);
@@ -258,11 +252,6 @@ namespace MilehighWorld.Core
             // ⚡ Bolt: Cache missing components as null to prevent repeated GetComponent overhead
             controller = characterObj.GetComponent<CharacterControllerBase>();
             _controllerCache[id] = controller;
-                if (controller != null)
-                {
-                    return controller;
-                }
-            }
 
             controller = characterObj.GetComponent<CharacterControllerBase>();
             if (controller != null)
